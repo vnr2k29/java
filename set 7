@@ -1,0 +1,29 @@
+# AA)
+
+class Box<T> { 
+    T obj; 
+ 
+    void set(T obj) { 
+        this.obj=obj; 
+    } 
+ 
+    T get() { 
+        return obj; 
+    } 
+ 
+    boolean isEmpty() { 
+        return obj==null; 
+    } 
+} 
+ 
+public class Main { 
+public static void main(String[] args) { 
+Box<String> b=new Box<>(); 
+b.set("Ajaz"); 
+System.out.println("Value: "+b.get()); 
+System.out.println("Is Empty: "+b.isEmpty()); 
+} 
+}
+
+
+##B)
