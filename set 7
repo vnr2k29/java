@@ -27,3 +27,28 @@ System.out.println("Is Empty: "+b.isEmpty());
 
 
 ##B)
+
+public class AutoboxingUnboxingDemo {
+    public static void main(String[] args) {
+        System.out.println("--- Autoboxing Examples ---");
+        // Primitive types
+        int primitiveInt = 25;
+        char primitiveChar = 'A';
+        // Autoboxing
+        Integer boxedInt = primitiveInt;
+        Character boxedChar = primitiveChar;
+        System.out.println("Integer Object: " + boxedInt);
+        System.out.println("Character Object: " + boxedChar);
+        System.out.println("\n--- Unboxing Examples ---");
+        // Wrapper objects
+        Integer objectInt = Integer.valueOf(100);
+        Double objectDouble = Double.valueOf(45.99);
+        // Unboxing
+        int unboxedInt = objectInt;
+        double unboxedDouble = objectDouble;
+        System.out.println("Primitive int: " + unboxedInt);
+        System.out.println("Primitive double: " + unboxedDouble);
+    }
+}
+
+
