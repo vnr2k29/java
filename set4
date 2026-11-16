@@ -1,0 +1,36 @@
+A)
+
+
+
+
+
+# B))
+
+class InsufficientFundsException extends Exception {
+
+    InsufficientFundsException(String msg) {
+        super(msg);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        double balance = 5000;
+        double withdraw = 6000;
+
+        try {
+            if (withdraw > balance) {
+                throw new InsufficientFundsException("Insufficient balance");
+            }
+
+            balance = balance - withdraw;
+
+            System.out.println("Remaining Balance: " + balance);
+        }
+        catch (InsufficientFundsException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
