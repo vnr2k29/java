@@ -1,6 +1,5 @@
-Question: Create three threads where one thread generates random integers. For an even 
-number, calculate its square, and for an odd number calculate its cube. 
-Java Program 
+#Q1))
+
 import java.util.Random; 
  
 class Square extends Thread { 
@@ -50,11 +49,8 @@ c.start();
 
 
 
-Q1(b). Producer-Consumer Problem Using Inter-Thread Communication 
-Question: Write a Java program that correctly implements the Producer-Consumer problem 
-using the concept of inter-thread communication. 
-Java Program 
-Java 
+##Q1(b).
+
 class Q { 
     int n; 
     boolean valueSet=false; 
