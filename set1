@@ -1,0 +1,17 @@
+
+class DebugTest {
+    public static void main(String[] args) {
+        int number = 5;
+        int factorial = 1;
+
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
+        }
+
+        if (factorial % 2 == 0) {
+            System.out.println(number + "! is Even: " + factorial);
+        } else {
+            System.out.println(number + "! is Odd: " + factorial);
+        }
+    }
+}
