@@ -1,0 +1,60 @@
+
+#File 1: Employee.txt 
+ 
+ID,Name,Salary,Department 
+101,Ajaz,25000,CSE 
+102,Ahmed,30000,IT 
+103,Rahul,28000,ECE 
+104,John,35000,CSE 
+
+
+#File 2: LabelsInGridLayout.java 
+
+import java.awt.*; 
+import java.io.*; 
+import java.util.*; 
+import javax.swing.*; 
+ 
+public class LabelsInGridLayout { 
+    public static void main(String[] args) { 
+        JFrame f=new JFrame("FILE READING EXAMPLE"); 
+ 
+        try { 
+            Scanner st=new Scanner(new FileReader("Employee.txt")); 
+ 
+            while(st.hasNext()) { 
+                f.add(new JLabel(st.next())); 
+                f.setLayout(new GridLayout(4,2)); 
+                f.setSize(400,200); 
+                f.setVisible(true); 
+            } 
+        } 
+        catch(Exception ex) { 
+            System.out.println("Error reading file"); 
+} 
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+} 
+} 
+
+
+#### BB)
+
+import java.io.*; 
+public class ListFilesInDir { 
+public static void listFiles(File dir) { 
+File files[]=dir.listFiles(); 
+for(File file:files) { 
+if(file.isFile()) { 
+} 
+else { 
+System.out.println(file.getName()); 
+System.out.println("Directory: "+file.getName()); 
+listFiles(file); 
+} 
+} 
+} 
+public static void main(String args[]) throws IOException { 
+File file=new File("C:/Labs"); 
+listFiles(file); 
+} 
+} 
