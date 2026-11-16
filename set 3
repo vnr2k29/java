@@ -1,0 +1,70 @@
+#A)
+abstract class Shape {
+    abstract void printArea();
+}
+
+class Rectangle extends Shape {
+    void printArea() {
+        System.out.println("Rectangle Area: " + (4 * 6));
+    }
+}
+
+class Triangle extends Shape {
+    void printArea() {
+        System.out.println("Triangle Area: " + (0.5 * 4 * 6));
+    }
+}
+
+class Circle extends Shape {
+    void printArea() {
+        System.out.println("Circle Area: " + (3.14 * 5 * 5));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle r = new Rectangle();
+        Triangle t = new Triangle();
+        Circle c = new Circle();
+
+        r.printArea();
+        t.printArea();
+        c.printArea();
+    }
+}
+
+##B)
+
+interface Currency {
+    void convert(double amount);
+}
+
+class Dollar implements Currency {
+    public void convert(double amount) {
+        System.out.println("Dollar to INR: " + (amount * 88));
+    }
+}
+
+class Euro implements Currency {
+    public void convert(double amount) {
+        System.out.println("Euro to INR: " + (amount * 102));
+    }
+}
+
+class Yen implements Currency {
+    public void convert(double amount) {
+        System.out.println("Yen to INR: " + (amount * 0.59));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dollar d = new Dollar();
+        Euro e = new Euro();
+        Yen y = new Yen();
+
+        d.convert(10);
+        e.convert(10);
+        y.convert(100);
+    }
+}
