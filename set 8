@@ -1,0 +1,70 @@
+##A))
+
+import java.util.*; 
+ 
+public class Main { 
+    public static void main(String[] args) { 
+        LinkedList<Integer> list=new LinkedList<>(); 
+ 
+        list.add(10); 
+        list.add(20); 
+        list.add(30); 
+        list.add(40); 
+ 
+        System.out.println("Original List: "+list); 
+ 
+        list.remove(Integer.valueOf(20)); 
+ 
+        System.out.println("After Deletion: "+list); 
+} 
+} 
+
+
+## BB)
+
+import java.awt.*; 
+import java.awt.event.*; 
+public class Main extends Frame { 
+Label l; 
+Main() { 
+        l=new Label("Mouse Event"); 
+        l.setAlignment(Label.CENTER); 
+ 
+        add(l); 
+        setSize(400,300); 
+        setVisible(true); 
+ 
+        addMouseListener(new MouseAdapter() { 
+            public void mouseClicked(MouseEvent e) { 
+                l.setText("Mouse Clicked"); 
+            } 
+ 
+            public void mousePressed(MouseEvent e) { 
+                l.setText("Mouse Pressed"); 
+            } 
+ 
+            public void mouseReleased(MouseEvent e) { 
+                l.setText("Mouse Released"); 
+            } 
+ 
+            public void mouseEntered(MouseEvent e) { 
+                l.setText("Mouse Entered"); 
+            } 
+ 
+            public void mouseExited(MouseEvent e) { 
+                l.setText("Mouse Exited"); 
+            } 
+        }); 
+ 
+        addWindowListener(new WindowAdapter() { 
+            public void windowClosing(WindowEvent e) { 
+                dispose(); 
+            } 
+        }); 
+    } 
+ 
+    public static void main(String[] args) { 
+        new Main(); 
+    } 
+}
+
