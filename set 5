@@ -1,0 +1,137 @@
+Question: Create three threads where one thread generates random integers. For an even 
+number, calculate its square, and for an odd number calculate its cube. 
+Java Program 
+import java.util.Random; 
+ 
+class Square extends Thread { 
+    int n; 
+ 
+    Square(int n) { 
+        this.n=n; 
+    } 
+ 
+    public void run() { 
+        System.out.println("Square: "+(n*n)); 
+    } 
+} 
+ 
+class Cube extends Thread { 
+    int n; 
+ 
+    Cube(int n) { 
+        this.n=n; 
+    } 
+ 
+    public void run() { 
+        System.out.println("Cube: "+(n*n*n)); 
+    } 
+} 
+ 
+public class Main { 
+    public static void main(String[] args) { 
+        Random r=new Random(); 
+ 
+        for(int i=0;i<5;i++) { 
+            int n=r.nextInt(10)+1; 
+ 
+            System.out.println("Number: "+n); 
+ 
+            if(n%2==0) { 
+                Square s=new Square(n); 
+                s.start(); 
+            } 
+            else { 
+Cube c=new Cube(n); 
+c.start(); 
+} 
+} 
+} 
+} 
+
+
+
+Q1(b). Producer-Consumer Problem Using Inter-Thread Communication 
+Question: Write a Java program that correctly implements the Producer-Consumer problem 
+using the concept of inter-thread communication. 
+Java Program 
+Java 
+class Q { 
+    int n; 
+    boolean valueSet=false; 
+ 
+    synchronized int get() { 
+        if(!valueSet) { 
+            try { 
+                wait(); 
+            } 
+            catch(InterruptedException e) { 
+                System.out.println("InterruptedException caught"); 
+            } 
+        } 
+ 
+        System.out.println("Got: "+n); 
+        valueSet=false; 
+        notify(); 
+        return n; 
+    } 
+ 
+    synchronized void put(int n) { 
+        if(valueSet) { 
+            try { 
+                wait(); 
+            } 
+            catch(InterruptedException e) { 
+                System.out.println("InterruptedException caught"); 
+            } 
+        } 
+ 
+        this.n=n; 
+        valueSet=true; 
+        System.out.println("Put: "+n); 
+        notify(); 
+    } 
+} 
+ 
+class Producer implements Runnable { 
+    Q q; 
+ 
+    Producer(Q q) { 
+        this.q=q; 
+        new Thread(this,"Producer").start(); 
+    } 
+ 
+    public void run() { 
+        int i=0; 
+ 
+        while(true) { 
+            q.put(i++); 
+        } 
+    } 
+} 
+ 
+class Consumer implements Runnable { 
+    Q q; 
+ 
+    Consumer(Q q) { 
+        this.q=q; 
+        new Thread(this,"Consumer").start(); 
+    } 
+ 
+    public void run() { 
+None 
+        while(true) { 
+            q.get(); 
+        } 
+    } 
+} 
+ 
+class PCFixed { 
+    public static void main(String args[]) { 
+        Q q=new Q(); 
+ 
+        new Producer(q); 
+        new Consumer(q); 
+ 
+        System.out.println("Press Control-C to stop."); 
+    } 
+} 
