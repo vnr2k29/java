@@ -1,0 +1,71 @@
+#2A)
+
+package mymath;
+
+public class Addition {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+
+
+package mymath;
+
+public class Subtraction {
+    public int sub(int a, int b) {
+        return a - b;
+    }
+}
+
+
+
+import mymath.Addition;
+import mymath.Subtraction;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Addition obj1 = new Addition();
+        Subtraction obj2 = new Subtraction();
+
+        System.out.println("Addition Result: " + obj1.add(10, 5));
+        System.out.println("Subtraction Result: " + obj2.sub(10, 5));
+    }
+}
+
+# 2b)
+
+class Account {
+    String holderName;
+    String accountType;
+    double balance;
+
+    Account() {
+        holderName = "Unknown";
+        accountType = "Savings";
+        balance = 500.0;
+    }
+
+    Account(String holderName, String accountType, double balance) {
+        this.holderName = holderName;
+        this.accountType = accountType;
+        this.balance = balance;
+    }
+
+    void displayAccountInfo() {
+        System.out.println("Holder: " + holderName +
+            " | Type: " + accountType +
+            " | Balance: $" + balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Account acc1 = new Account();
+        Account acc2 = new Account("Alice Smith", "Current", 25000.50);
+
+        System.out.println("--- Account Details ---");
+
+        acc1.displayAccountInfo();
+        acc2.displayAccountInfo();
+    }
+}
