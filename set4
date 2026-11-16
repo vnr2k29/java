@@ -1,6 +1,59 @@
 A)
 
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class Add1 extends JFrame implements ActionListener {
+    String msg;
+    JTextField num1, num2, res;
+    JLabel l1, l2, l3;
+    JButton div;
+    public Add1() {
+        setTitle("Division Operation");
+        setSize(350, 300);
+        setLayout(new FlowLayout());
+        l1 = new JLabel("Number 1");
+        l2 = new JLabel("Number 2");
+        l3 = new JLabel("Result");
+        num1 = new JTextField(10);
+        num2 = new JTextField(10);
+        res = new JTextField(20);
+        res.setEditable(false);
+        div = new JButton("DIV");
+        add(l1);
+        add(num1);
+        add(l2);
+        add(num2);
+        add(l3);
+        add(res);
+        add(div);
+        div.addActionListener(this);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    public void actionPerformed(ActionEvent ac) {
+        try {
+            int n1 = Integer.parseInt(num1.getText());
+            int n2 = Integer.parseInt(num2.getText());
+            if (n2 == 0) {
+                throw new ArithmeticException();
+            } else {
+                int n3 = n1 / n2;
+                msg = String.valueOf(n3);
+            }
+        }
+        catch (NumberFormatException e) {
+            msg = "NumberFormat Exception";
+        }
+        catch (ArithmeticException e) {
+            msg = "Arithmetic Exception";
+        }
+        res.setText(msg);
+    }
+    public static void main(String[] args) {
+        new Add1();
+}
+}
 
 
 
