@@ -1,0 +1,121 @@
+import javax.swing.*; 
+import java.awt.*; 
+import java.awt.event.*; 
+ 
+public class SimpleCalculator extends JFrame implements 
+ActionListener { 
+    JTextField textField; 
+    JButton buttons[]=new JButton[10]; 
+    JButton add,sub,mul,mod,equal; 
+    JPanel panel; 
+    double num1,num2,result; 
+    char operator; 
+ 
+    public SimpleCalculator() { 
+        setTitle("Simple Calculator"); 
+        setSize(400,450); 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+ 
+        textField=new JTextField(); 
+        textField.setFont(new Font("Arial",Font.PLAIN,20)); 
+        textField.setEditable(false); 
+ 
+        add=new JButton("+"); 
+        sub=new JButton("-"); 
+        mul=new JButton("*"); 
+        mod=new JButton("%"); 
+        equal=new JButton("="); 
+ 
+        for(int i=0;i<10;i++) { 
+            buttons[i]=new JButton(String.valueOf(i)); 
+            buttons[i].addActionListener(this); 
+        } 
+ 
+        add.addActionListener(this); 
+        sub.addActionListener(this); 
+        mul.addActionListener(this); 
+        mod.addActionListener(this); 
+        equal.addActionListener(this); 
+ 
+        panel=new JPanel(); 
+        panel.setLayout(new GridLayout(4,4,5,5)); 
+ 
+        panel.add(buttons[1]); 
+        panel.add(buttons[2]); 
+        panel.add(buttons[3]); 
+        panel.add(add); 
+ 
+        panel.add(buttons[4]); 
+        panel.add(buttons[5]); 
+        panel.add(buttons[6]); 
+        panel.add(sub); 
+ 
+        panel.add(buttons[7]); 
+        panel.add(buttons[8]); 
+        panel.add(buttons[9]); 
+        panel.add(mul); 
+ 
+        panel.add(buttons[0]); 
+        panel.add(mod); 
+        panel.add(equal); 
+ 
+        add(textField,BorderLayout.NORTH); 
+        add(panel,BorderLayout.CENTER); 
+        setVisible(true); 
+    } 
+ 
+    public void actionPerformed(ActionEvent e) { 
+        for(int i=0;i<10;i++) { 
+            if(e.getSource()==buttons[i]) { 
+                textField.setText(textField.getText()+i); 
+            } 
+        } 
+ 
+        if(e.getSource()==add || e.getSource()==sub || 
+           e.getSource()==mul || e.getSource()==mod) { 
+            num1=Double.parseDouble(textField.getText()); 
+ 
+            if(e.getSource()==add) { 
+                operator='+'; 
+            } 
+            else if(e.getSource()==sub) { 
+                operator='-'; 
+            } 
+            else if(e.getSource()==mul) { 
+                operator='*'; 
+            } 
+            else { 
+                operator='%'; 
+            } 
+ 
+            textField.setText(""); 
+        } 
+ 
+        if(e.getSource()==equal) { 
+            try { 
+                num2=Double.parseDouble(textField.getText()); 
+ 
+                switch(operator) { 
+                    case '+': result=num1+num2; break; 
+                    case '-': result=num1-num2; break; 
+                    case '*': result=num1*num2; break; 
+                    case '%': 
+                        if(num2==0) { 
+                            throw new ArithmeticException(); 
+                        } 
+                        result=num1%num2; 
+                        break; 
+                } 
+ 
+                textField.setText(String.valueOf(result)); 
+            } 
+            catch(ArithmeticException ex) { 
+                textField.setText("Cannot divide by zero"); 
+            } 
+        } 
+    } 
+ 
+    public static void main(String[] args) { 
+        new SimpleCalculator(); 
+    } 
+}
